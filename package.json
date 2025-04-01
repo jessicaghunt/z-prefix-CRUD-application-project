@@ -1,0 +1,19 @@
+{
+  "name": "z-prefix-crud-application-project",
+  "version": "1.0.0",
+  "description": "Z-Prefix CRUD Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jessicaghunt/z-prefix-CRUD-application-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jessicaghunt/z-prefix-CRUD-application-project/issues"
+  },
+  "homepage": "https://github.com/jessicaghunt/z-prefix-CRUD-application-project#readme"
+}
