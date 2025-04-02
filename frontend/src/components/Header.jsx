@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import '../styles/Header.css' 
 // import Siderbar from "./src/styles/Siderbar.css"
 const Heading = () => {
     const [popUp, setPopUp] = useState(false);
@@ -21,20 +22,23 @@ const Heading = () => {
         <>
         <div className="heading-bar">
             <div className="logo">
-                <Link to="/"><div style={{ position: 'relative', fontFamily: 'sans-serif'}}>
-                    {/* <img src="../test-image.png" className="logo" /> */}
-                    HOME</div>
+                <Link to="/">
+                <img src="/silhouette-cowboy-hat-logo.JPG" className="logo" alt="Logo" />
+                    {/* HOME */}
                 </Link>
+                </div>
+                <div className="company-header">
+                    <h1>Trail Ride Treasures</h1>
                 </div>
                 <div className="nav-bar">
                 <nav>
                     <ul>
                         <li>
                             <Link to="/create_account" title="Create Account">
-                            <div style={{ position: 'relative', fontFamily: 'sans-serif'}}>
+                            {/* <div style={{ position: 'relative', fontFamily: 'sans-serif'}}> */}
                             {/* <img src="../test-image.png" className="logo" /> */}
                                 <div className="link-word">Create Account</div>
-                            </div></Link>
+                            </Link>
                         </li>
                         <li> <button onClick={() => setPopUp(true)} className="login-button">Login</button>
                         {/* <Link to="/login" title="Manager Login"> */}
@@ -57,7 +61,7 @@ const Heading = () => {
                             type="text" placeholder="Trail Username" value={username} onChange={(e) => setUsername(e.target.value)}
                             />
                         <input 
-                            type="password" placeholder="Whats the Password?" value={password} onChange={(e) => setPassword(e.target.value)}
+                            type="password" placeholder="Whats Ya Password?" value={password} onChange={(e) => setPassword(e.target.value)}
                             />
                             <button onClick={runLogin}>Submit</button>
                             <button onClick={() => setPopUp(false)}>Close</button>
