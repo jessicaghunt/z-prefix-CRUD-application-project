@@ -2,9 +2,12 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
-import Sidebar from './components/Sidebar';
+// import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
-import './App.css'
+import Heading from './components/Header';
+import ManagerLogin from './pages/Manager';
+import CreateAccount from './pages/Account';
+// import './App.css'
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -12,10 +15,12 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <Sidebar />
+        <Heading />
         <main className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/login" element={<ManagerLogin />} />
+            <Route path="/create_account" element={<CreateAccount />} />
 
           </Routes>
         </main>

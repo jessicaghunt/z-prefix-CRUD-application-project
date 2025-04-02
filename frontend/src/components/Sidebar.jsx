@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-// import "../styles/Sidebar.css";
-
+// import Siderbar from "./src/styles/Siderbar.css"
 const Sidebar = () => {
     return (
         <div className="sidebar">
@@ -14,14 +13,15 @@ const Sidebar = () => {
                             left: 0,
                             right: 0, 
                             bottom: 0,
-                            diplay: 'flex',
+                            display: 'flex',
                             justifyContent: 'center',
                             marginTop: '35px',
                             fontSize: '28px',
                             color: 'brown',
                             fontFamily: 'fantasy',
                             zIndex: 1
-                        }}>HOME</div>
+                        }}>
+                            HOME</div>
                         </div></Link>
             </div>
             <div className="nav-bar">
@@ -37,7 +37,7 @@ const Sidebar = () => {
                                     left: 0,
                                     right: 0, 
                                     bottom: 0,
-                                    diplay: 'flex',
+                                    display: 'flex',
                                     justifyContent: 'center',
                                     marginTop: '80%',
                                     fontSize: '12px',
@@ -57,7 +57,7 @@ const Sidebar = () => {
                                     left: 0,
                                     right: 0, 
                                     bottom: 0,
-                                    diplay: 'flex',
+                                    display: 'flex',
                                     justifyContent: 'center',
                                     marginTop: '80%',
                                     fontSize: '12px',

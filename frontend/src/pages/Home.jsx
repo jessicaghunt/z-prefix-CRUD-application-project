@@ -6,7 +6,7 @@ import { react } from "react";
 
 const Home = () => {
     return(
-        <div>
+        <div className="header">
         <h1>Trailride Treasures</h1>
         </div>
     );
