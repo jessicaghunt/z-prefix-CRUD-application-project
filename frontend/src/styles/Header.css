@@ -9,7 +9,7 @@
     left: 50%;
     transform: translateX(-50%);
     color: brown;
-    background-color: aqua;
+    background-color: rgba(0, 255, 255, 0.349);
 
 }
 
@@ -17,6 +17,7 @@
     position: absolute;
     top: 10px;
     left: -10px;
+    
 }
 .logo img{
     width: 200px;
@@ -26,7 +27,7 @@
 .nav-bar ul {
     list-style: none;
     display: flex;
-    gap: 15px;
+    gap: 10px;
 }
 .link-word {
     background-color: brown;
@@ -52,7 +53,11 @@
     font-family:fantasy;
 }
 
-.popup-overlay {
+.login-button:hover {
+    background-color: darkred;
+}
+
+/* .popup-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -62,10 +67,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 .popup-container {
-    background: white;
+    background: black;
+    color: white;
     padding: 18px;
     border-radius: 30px;
     text-align: center;

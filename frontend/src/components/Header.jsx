@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import '../styles/Header.css' 
 // import Siderbar from "./src/styles/Siderbar.css"
 const Heading = () => {
@@ -9,8 +9,24 @@ const Heading = () => {
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
+    const [users, setUsers] = useState()
+
+    useEffect(() => {
+        fetch("http://localhost:3001/users")
+            .then((res) => res.json())
+            .then((data) => {
+                setUsers(data);
+            });
+    }, [])
+
+
     const runLogin = () => {
-        if (username === "admin" && password === "12345678") {
+        const userpass = new Map();
+        users.forEach((item) => {
+            userpass.set(item.username, item.password);
+        })
+
+        if (userpass.has(username) && password === userpass.get(username)) {
             setPopUp(false);
             navigate("/login");
         }else{

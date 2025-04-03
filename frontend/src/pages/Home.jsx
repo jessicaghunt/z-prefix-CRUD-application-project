@@ -1,10 +1,25 @@
-import { react } from "react";
+import { useState, useEffect } from "react";
 
 // import { useState, useEffect } from "react";
 // import { Link } from "react-router-dom";
 import "../styles/Home.css";
 
+
+
 const Home = () => {
+    // const api_url = "http://localhost:3001";
+    const [items, setItems] = useState([]);
+    // const [users, setUsers] = useState()
+
+    useEffect(() => {
+        // fetch("${api_url}/items")
+        fetch("http://localhost:3001/items")
+            .then((res) => res.json())
+            .then((data) => {
+                setItems(data);
+            });
+    }, [])
+
     return(
         <>
         <div className="home-container">
@@ -18,21 +33,21 @@ const Home = () => {
             <h2>Current Inventory</h2>
             <div className="full-inventory-header">
                 <table>
-                    <thread>
+                    <thead>
                         <tr>
                             <th>Item</th>
                             <th>Description</th>
                             <th>Quantity Available</th>
                         </tr>
-                    </thread>
+                    </thead>
                     <tbody>
-                        {/* {item?.map((item, index) => (
+                        {items.map((item, index) => (
                         <tr key={index}>
-                            <td>{item?.item_name || "n/a"}</td>
+                            <td>{item?.itemname || "n/a"}</td>
                             <td>{item?.description || "n/a"}</td>
                             <td>{item?.quantity || "n/a"}</td>
                         </tr>
-                        ))} */}
+                        ))}
                     </tbody>
                 </table>
             </div>

@@ -1,4 +1,5 @@
 import { react, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/Home.css";
 
 // import { useState, useEffect } from "react";
@@ -7,6 +8,11 @@ import "../styles/Home.css";
 
 const ManagerLogin = () => {
     const [popUp, setPopUp] = useState(false);
+    const navigate = useNavigate();
+
+    const viewAllItems = () => {
+        navigate("/");
+    }
 
     return(
   <>
@@ -21,8 +27,11 @@ const ManagerLogin = () => {
             <h2>Current Inventory</h2>
             <div className="full-inventory-header">
             <button onClick={() => setPopUp(true)} className="add-item-button">➕Add Item</button>
+            <button onClick={viewAllItems} className="view-all-items-button">🔍 View Entire Item List</button>
+
+            {/* <button onClick={() =>} */}
                 <table>
-                    <thread>
+                    <thead>
                         <tr>
                             <th>Item</th>
                             <th>Description</th>
@@ -30,13 +39,15 @@ const ManagerLogin = () => {
                             <th>Delete</th>
                             <th>Edit</th>
                         </tr>
-                    </thread>
+                    </thead>
                     <tbody>
                         {/* {item?.map((item, index) => (
                         <tr key={index}>
                             <td>{item?.item_name || "n/a"}</td>
                             <td>{item?.description || "n/a"}</td>
                             <td>{item?.quantity || "n/a"}</td>
+                            <td>Delete Button</td>
+                            <td>Edit Button</td>
                         </tr>
                         ))} */}
                     </tbody>
