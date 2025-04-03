@@ -69,9 +69,8 @@ const Heading = () => {
             </div>
 
             {popUp && (
-                <div className="popup-overlay">
                     <div className="popup-container">
-                        <h2>Login</h2>
+                        {/* <h3>Login</h3> */}
                         {error && <p className="error">{error}</p>}
                         <input
                             type="text" placeholder="Trail Username" value={username} onChange={(e) => setUsername(e.target.value)}
@@ -82,7 +81,7 @@ const Heading = () => {
                             <button onClick={runLogin}>Submit</button>
                             <button onClick={() => setPopUp(false)}>Close</button>
                     </div>
-        </div>
+
             )}
             
             </>

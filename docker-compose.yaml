@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  ui:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend/app  # Mounts local 'frontend' folder to container
+      - /app/node_modules  # Prevents overwriting node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true  # Enables hot-reloading
+    stdin_open: true
+    tty: true
+  api:
+    build: ./api
+    ports:
+      - "5432:5432"
+    environment:
+      - NODE_ENV=development

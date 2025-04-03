@@ -30,21 +30,21 @@ exports.seed = async (knex) => {
       userid: 1,
       itemname: 'boots',
       description: 'Snakeskin boots',
-      quantity: '2'
+      quantity: 57
     },
     {
       id: 2,
       userid: 1,
       itemname: 'belt',
       description: 'Saddleback leather belt',
-      quantity: '1'
+      quantity: 12
     },
     {
       id: 3,
       userid: 1,
       itemname: 'hat',
       description: '10-gallon hat',
-      quantity: '1'
+      quantity: 1
     }
   ]);
 };
