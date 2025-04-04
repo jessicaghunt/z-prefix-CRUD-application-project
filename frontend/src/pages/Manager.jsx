@@ -9,8 +9,14 @@ import "../styles/Home.css";
 const ManagerLogin = () => {
     const { userid } = useParams();
     const [popUp, setPopUp] = useState(false);
+    const [editPopUp, setEditPopUp] = useState(false);
     const [managerItems, setManagerItems] = useState([]);
     const [addItem, setAddItem] = useState({
+        itemname:'',
+        description: '',
+        quantity: 0
+    })
+    const [editItem, setEditItem] = useState({
         itemname:'',
         description: '',
         quantity: 0
@@ -40,6 +46,35 @@ const handleItemChange = (e) => {
     setAddItem((prevState) => ({
         ...prevState, [name]: value
     }))
+}
+
+const handleEditItemChange = (e) => {
+    const { name, value } = e.target;
+    setEditItem((prevState) => ({
+        ...prevState, [name]: value
+    }))
+    console.log("editItem state upon change:", editItem);
+}
+
+const handleItemUpdate = (id) => {
+    const newItem = { ...editItem, userid: userid };
+
+    console.log("editItem state upon submit:", editItem);
+    console.log("ManagerItems state upon submit:", managerItems);
+
+    fetch(`http://localhost:3001/items/${id}`, {
+        method: "PATCH",
+        headers: {"Content-Type": "application/json",},
+        body: JSON.stringify( editItem ),
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            const updatedItem = { ...newItem, id: data.id };
+            setManagerItems(prevItems => [...prevItems.filter(item => item.id !== id), updatedItem]);       
+            setEditPopUp(false);
+            setEditItem({ itemname: '', description: '', quantity: 0 });
+        })
+        .catch((error) => console.error('Error editing item:', error));
 }
 
 const handleItemAdd = () => {
@@ -99,7 +134,7 @@ const handleItemDelete = (id) => {
                             <th>Description</th>
                             <th>Quantity Available</th>
                             <th>Delete</th>
-                            {/* <th>Edit</th> */}
+                            <th>Edit</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -114,7 +149,9 @@ const handleItemDelete = (id) => {
                             <td>{item.quantity || "n/a"}</td>
                             <td><button onClick={() => handleItemDelete(item.id)}>
                                 X</button></td>
-                            {/* <td>Edit Button</td> */}
+                            <td><button onClick={() => {setEditItem(item); setEditPopUp(true);}} className="edit-item-button">✏️</button></td>
+
+                            {/* <td><button onClick={() => handleItemUpdate(item.id)}>✏️</button></td> */}
                         </tr>
                         ))
                     ):(<tr><td colSpan="4">NO ITEMS</td></tr>)}
@@ -142,8 +179,33 @@ const handleItemDelete = (id) => {
                             <input type="number" name="quantity" value={addItem.quantity} onChange={handleItemChange} placeholder="Quantity?" />
                         </div>
 
-                     <button onClick={handleItemAdd}>Add Item</button>
+                    <button onClick={handleItemAdd}>Add Item</button>
                     <button onClick={() => setPopUp(false)}>Close</button>
+                    </div>
+                </div>
+        )}
+
+        {editPopUp && (
+            <div className="add-item-popup">
+                <div className="add-item-popup-container">
+            {/* <div className="edit-item-popup">
+                <div className="edit-item-popup-container"> */}
+                    <h3>Edit Item</h3>
+                    <div>
+                        <label>Update Item Name</label>
+                        <input type="text" name="itemname" value={editItem.itemname} onChange={handleEditItemChange} placeholder="Enter new trail item" />
+                        </div>
+                        <div>
+                            <label>Update Description</label>
+                            <input type="text" name="description" value={editItem.description} onChange={handleEditItemChange} placeholder="Enter Description" />
+                        </div>
+                        <div>
+                            <label>Update Quantity</label>
+                            <input type="number" name="quantity" value={editItem.quantity} onChange={handleEditItemChange} placeholder="Quantity?" />
+                        </div>
+
+                    <button onClick={() => handleItemUpdate(editItem.id)}>Edit Item</button>
+                    <button onClick={() => setEditPopUp(false)}>Close</button>
                     </div>
                 </div>
         )}
