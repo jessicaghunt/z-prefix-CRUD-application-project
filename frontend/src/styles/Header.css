@@ -10,7 +10,7 @@
     transform: translateX(-50%);
     color: brown;
     background-color: rgba(218, 165, 32, 0.363);
-    border-radius: 1px;
+    border-radius: 4px;
 
 }
 
@@ -34,7 +34,7 @@
     background-color: brown;
     color: black;
     border: none;
-    padding: 6px 12px;
+    padding: 8px 12px;
     cursor: pointer;
     border-radius: 5px;
     font-family:fantasy;

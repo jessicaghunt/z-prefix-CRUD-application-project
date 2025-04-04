@@ -44,7 +44,9 @@ const Home = () => {
                         {items.map((item, index) => (
                         <tr key={index}>
                             <td>{item?.itemname || "n/a"}</td>
-                            <td>{item?.description || "n/a"}</td>
+                            <td>{item?.description.length > 100
+                            ? `${item.description.slice(0, 100)}...`
+                            :item.description || "n/a"}</td>
                             <td>{item?.quantity || "n/a"}</td>
                         </tr>
                         ))}

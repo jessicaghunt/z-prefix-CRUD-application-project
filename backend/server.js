@@ -3,6 +3,10 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 app.use(express.json());
+// const bcrypt = require('bcrypt');
+// const saltRounds = 10;
+
+// const hashedPassword = await bcrypt.hash(password, saltRounds);
 const port = 3001;
 
 const knex = require("knex")(
@@ -16,7 +20,14 @@ app.get('/', (req, res) => {
 
 //ITEMS INFORMATION
 app.get('/items', async (req, res) => {
-  const items = await knex("item").select('*').orderBy("created_at", "desc");
+  const { userid } = req.query;
+  let items = [];
+  
+ if (userid) {
+   items = await knex('item').where({ userid }).orderBy("created_at", "desc");
+ } else {
+  items = await knex('item').select('*').orderBy("created_at", "desc");
+ }
   res.status(200).json(items);
 })
 
@@ -34,12 +45,12 @@ app.post('/items', async (req, res) => {
       return res.status(400).json({ error: "All information needed"});
     }
   
-    const createdItem = await knex("item").insert({
+    const [createdItem] = await knex("item").insert({
       userid,
       itemname,
       description,
       quantity
-    }).returning("id");
+    }).returning("*");
 
     const id = createdItem[0]?.id || createdItem[0];
   
