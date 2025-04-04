@@ -44,7 +44,8 @@ Welcome to the Trail Ride Treasures. This app allows visitors to see all the ite
 
 # Trust The Process
 [Kanban Board](https://kanbanflow.com/board/feKzjV6) <br />
-ERD image here
+<Strong> Provided ERD </Strong> ("Users" was used instead of "User" in the User table)
+![ERD-CRUD](https://github.com/user-attachments/assets/a9b659ca-9819-431d-b0b5-f4dbe8e2d308)
 
 # Author
 [Jessica Hunt](https://github.com/jessicaghunt)
